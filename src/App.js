@@ -1,9 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useTranslation } from 'react-i18next';
 import { Link, animateScroll as scroll } from "react-scroll";
-import { Element } from 'react-scroll';
 import { withTranslation } from 'react-i18next';
-import { Helmet } from 'react-helmet';
 import "../src/styles/style.css"
 import background from "./image/background.png"
 import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
@@ -12,24 +10,16 @@ import logo from "./image/logo.png"
 import instagram from "./image/instagram.png"
 import whatsapp from "./image/whatsapp.png"
 import viber from "./image/viber.png"
-import card1 from "./image/card_1.png"
-import card2 from "./image/card_2.png"
-import card3 from "./image/card_3.png"
-import card4 from "./image/card_4.png"
-import card5 from "./image/card_5.png"
 import icon1 from "./image/icon_1.png"
 import icon2 from "./image/icon_2.png"
 import icon3 from "./image/icon_3.png"
 import chatBotButton from "./image/chatbot.png"
-import { Swiper, SwiperSlide } from 'swiper/react';
 import './18n';
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-
-import { EffectCoverflow, Pagination, Navigation } from 'swiper';
-
+import EuropeMap from './EuropeMap'
 
 const API_KEY = process.env.REACT_APP_SECRET_KEY;
 // "Explain things like you would to a 10 year old learning how to code."
@@ -63,10 +53,6 @@ const App = () => {
         buttonRef.current.click();
     }, []);
 
-    const changeLang = (lang) => {
-        // Your code to change the language
-        console.log(`Language changed to ${lang}`);
-    };
     const { t, i18n } = useTranslation();
 
     const changeLanguage = (language) => {
@@ -119,8 +105,6 @@ const App = () => {
 
         setMessages(newMessages);
 
-        // Initial system message to determine ChatGPT functionality
-        // How it responds, how it talks, etc.
         setIsTyping(true);
         await processMessageToChatGPT(newMessages);
     };
@@ -178,56 +162,57 @@ const App = () => {
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
             <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-element-bundle.min.js"></script>
             <header id="section1" style={{ backgroundImage: `url(${background})` }}>
-            <nav className={scrolled ? 'scrolled' : ''}>
-      <div className="container_nav">
-        <div className="links">
-          <img onClick={refreshPage} className="logo" src={logo} alt="" />
-          <a className="link" onClick={refreshPage}>
-            <Link
-              activeClass="active"
-              to="section1"
-              spy={true}
-              smooth={true}
-              offset={-70}
-              duration={500}
-            >{t('Main-page')} </Link>
-          </a>
-          <a className="link">
-            <Link
-              activeClass="active"
-              to="section2"
-              spy={true}
-              smooth={true}
-              offset={-70}
-              duration={500}
-            >{t('Tours')} </Link>
-          </a>
-          <a className="link">
-            <Link
-              activeClass="active"
-              to="section3"
-              spy={true}
-              smooth={true}
-              offset={-70}
-              duration={500}
-            > {t('Question')}</Link>
-          </a>
-        </div>
-        <div className="language-switcher">
-          <div id="default_lang" className="language" onClick={() => changeLanguage("kz")} ref={buttonRef}>Kz</div>
-          <div className="language" onClick={() => changeLanguage("ru")}>Ru</div>
-        </div>
-      </div>
-    </nav>
+                <nav className={scrolled ? 'scrolled' : ''}>
+                    <div className="container_nav">
+                        <div className="links">
+                            <img onClick={refreshPage} className="logo" src={logo} alt="" />
+                            <a className="link" onClick={refreshPage}>
+                                <Link
+                                    activeClass="active"
+                                    to="section1"
+                                    spy={true}
+                                    smooth={true}
+                                    offset={-70}
+                                    duration={500}
+                                >{t('Main-page')} </Link>
+                            </a>
+                            <a className="link">
+                                <Link
+                                    activeClass="active"
+                                    to="section2"
+                                    spy={true}
+                                    smooth={true}
+                                    offset={-70}
+                                    duration={500}
+                                >{t('Tours')} </Link>
+                            </a>
+                            <a className="link">
+                                <Link
+                                    activeClass="active"
+                                    to="section3"
+                                    spy={true}
+                                    smooth={true}
+                                    offset={-70}
+                                    duration={500}
+                                > {t('Question')}</Link>
+                            </a>
+                        </div>
+                        <div className="language-switcher">
+                            <div id="default_lang" className="language" onClick={() => changeLanguage("kz")} ref={buttonRef}>Kz</div>
+                            <div className="language" onClick={() => changeLanguage("ru")}>Ru</div>
+                        </div>
+                    </div>
+                </nav>
                 <div className="container_header">
                     <div className="header_main">
                         <h1>GPT tour</h1>
                         <h2>{t('header_slogan')}</h2>
-                        <div className="social_media">
-                            <img src={whatsapp} alt="" />
-                            <img src={viber} alt="" />
-                            <img src={instagram} alt="" />
+                        <div class="social_media">
+                            <a href="https://wa.me/+77006721042" target="_blank"><img src={whatsapp} alt="" /></a>
+                            <a href="https://instagram.com/gpt_tour_kz?igshid=NTc4MTIwNjQ2YQ==" target="_blank"><img src={viber} alt="" /></a>
+                            <a href="https://instagram.com/gpt_tour_kz?igshid=NTc4MTIwNjQ2YQ==" target="_blank"><img src={instagram} alt="" /></a>
                         </div>
+
                     </div>
                 </div>
             </header>
@@ -254,58 +239,7 @@ const App = () => {
             <div className="slider" id="section2">
                 <div className="container">
                     <h1 className="title">{t("Tours")}</h1>
-                    <Swiper
-                        slidesPerView={3}
-                        spaceBetween={30}
-                        pagination={{
-                            clickable: true,
-                        }}
-                        modules={[Pagination]}
-                        className="mySwiper"
-                        loop={true}
-                    >
-                        <SwiperSlide className="swiper-slider" style={{ backgroundImage: `url(${card1})`, display: "flex" }}>
-                            <h1 className="slider_card_text">{t("tour-1-title")}</h1>
-                            <h2 className="slider_card_subtext">{t("tour-1-desc")}</h2>
-                        </SwiperSlide>
-                        <SwiperSlide className="swiper-slider" style={{ backgroundImage: `url(${card2})`, display: "flex" }}>
-                            <h1 className="slider_card_text">{t("tour-2-title")}</h1>
-                            <h2 className="slider_card_subtext">{t("tour-2-desc")}</h2>
-                        </SwiperSlide>
-                        <SwiperSlide className="swiper-slider" style={{ backgroundImage: `url(${card3})`, display: "flex" }}>
-                            <h1 className="slider_card_text">{t("tour-3-title")}</h1>
-                            <h2 className="slider_card_subtext">{t("tour-3-desc")}</h2>
-                        </SwiperSlide>
-                        <SwiperSlide className="swiper-slider" style={{ backgroundImage: `url(${card4})`, display: "flex" }}>
-                            <h1 className="slider_card_text">{t("tour-4-title")}</h1>
-                            <h2 className="slider_card_subtext">{t("tour-4-desc")}</h2>
-                        </SwiperSlide>
-                        <SwiperSlide className="swiper-slider" style={{ backgroundImage: `url(${card5})`, display: "flex" }}>
-                            <h1 className="slider_card_text">{t("tour-5-title")}</h1>
-                            <h2 className="slider_card_subtext">{t("tour-5-desc")}</h2>
-                        </SwiperSlide>
-                        <SwiperSlide className="swiper-slider" style={{ backgroundImage: `url(${card1})`, display: "flex" }}>
-                            <h1 className="slider_card_text">{t("tour-1-title")}</h1>
-                            <h2 className="slider_card_subtext">{t("tour-1-desc")}</h2>
-                        </SwiperSlide>
-                        <SwiperSlide className="swiper-slider" style={{ backgroundImage: `url(${card2})`, display: "flex" }}>
-                            <h1 className="slider_card_text">{t("tour-2-title")}</h1>
-                            <h2 className="slider_card_subtext">{t("tour-2-desc")}</h2>
-                        </SwiperSlide>
-                        <SwiperSlide className="swiper-slider" style={{ backgroundImage: `url(${card3})`, display: "flex" }}>
-                            <h1 className="slider_card_text">{t("tour-3-title")}</h1>
-                            <h2 className="slider_card_subtext">{t("tour-3-desc")}</h2>
-                        </SwiperSlide>
-                        <SwiperSlide className="swiper-slider" style={{ backgroundImage: `url(${card4})`, display: "flex" }}>
-                            <h1 className="slider_card_text">{t("tour-4-title")}</h1>
-                            <h2 className="slider_card_subtext">{t("tour-4-desc")}</h2>
-                        </SwiperSlide>
-                        <SwiperSlide className="swiper-slider" style={{ backgroundImage: `url(${card5})`, display: "flex" }}>
-                            <h1 className="slider_card_text">{t("tour-5-title")}</h1>
-                            <h2 className="slider_card_subtext">{t("tour-5-desc")}</h2>
-                        </SwiperSlide>
-
-                    </Swiper>
+                    <EuropeMap width={800} height={600} />
                 </div>
             </div>
             <div className="form_panel" id="section3">
@@ -324,14 +258,14 @@ const App = () => {
                     <div className="footer_content">
                         <h1 className="title">GPT tour</h1>
                         <div className="footer_links">
-                            <a href="#" className="footer_link">{t('Main-page')}</a>
-                            <a href="#" className="footer_link">{t('Tours')}</a>
-                            <a href="#" className="footer_link">{t('Question')}</a>
+                            <a className="footer_link">{t('Main-page')}</a>
+                            <a className="footer_link">{t('Tours')}</a>
+                            <a className="footer_link">{t('Question')}</a>
                         </div>
-                        <div className="social_media">
-                            <img src={whatsapp} alt="" />
-                            <img src={viber} alt="" />
-                            <img src={instagram} alt="" />
+                        <div class="social_media">
+                            <a href="https://wa.me/+77006721042" target="_blank"><img src={whatsapp} alt="" /></a>
+                            <a href="https://instagram.com/gpt_tour_kz?igshid=NTc4MTIwNjQ2YQ==" target="_blank"><img src={viber} alt="" /></a>
+                            <a href="https://instagram.com/gpt_tour_kz?igshid=NTc4MTIwNjQ2YQ==" target="_blank"><img src={instagram} alt="" /></a>
                         </div>
                     </div>
                 </div>

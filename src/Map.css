@@ -1,0 +1,235 @@
+h2 {
+  font-family: 'Jura', sans-serif;
+}
+
+ul li,
+a {
+  font-family: 'Playfair Display', sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+
+.rsm-svg {
+  overflow: visible !important;
+}
+
+
+
+.rsm-geography {
+  fill: #D6D6DA;
+  stroke: #FFFFFF;
+  stroke-width: 0.5;
+  cursor: pointer;
+  outline: 0;
+  border: none;
+  box-shadow: none;
+}
+
+.rsm-geography:hover {
+  fill: rgb(38, 179, 255);
+}
+
+.marker{
+  transition: 0.2ms all ease-in;
+}
+
+.marker:hover{
+  transform: scale(1.3);
+  color: #dc3545;
+  transition: 0.2ms all ease-in;
+}
+
+.popup {
+  position: fixed;
+  left: 50%;
+  top: 54%;
+  transform: translate(-50%, -50%);
+  width: 1200px;
+  height: 700px;
+  background-color: #fff;
+  border: 1px solid #999;
+  padding: 10px;
+  overflow: hidden;
+}
+
+.popup-content,
+.popup-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
+.popup-content::-webkit-scrollbar,
+.popup-scroll::-webkit-scrollbar {
+  width: 6px;
+  background-color: transparent;
+}
+
+.popup-content::-webkit-scrollbar-thumb,
+.popup-scroll::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+.popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #fff;
+}
+
+.popup-header h3 {
+  font-size: 25px;
+  margin: 0;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  font-size: 34px;
+  color: #999;
+}
+
+.close-button:hover{
+  transform: scale(1.5);
+  color: #dc3545;
+}
+
+.popup-content {
+  background-color: #fff;
+  padding: 20px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+
+
+/* Country Card */
+.country-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.country-card h3 {
+  font-size: 25px;
+  margin: 0;
+}
+
+.country-card p {
+  font-size: 14px;
+  margin: 0;
+  margin-top: 5px;
+}
+
+.advantages-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 10px 0;
+}
+
+.advantages-list li {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.button-group {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.button-group a,button {
+  display: inline-block;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  margin-left: 10px;
+  border: none;
+}
+
+.button-group a:first-child {
+  background-color: #dc3545;
+}
+
+.button-group a:hover {
+  background-color: #0056b3;
+}
+
+
+/* Map Popup Styles */
+.map-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.map-popup-content {
+  position: relative;
+  width: 80%;
+  max-width: 800px;
+  max-height: 80vh;
+  background-color: #fff;
+  padding: 20px;
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+iframe {
+  width: 100%;
+  height: 100%;
+}
+
+.map-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.map-popup .map {
+  width: 80%;
+  height: 80%;
+  background-color: #fff;
+  border-radius: 4px;
+  padding: 20px;
+}
+
+.map-popup .map a{
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.map-popup .map button{
+  margin-right: 10px;
+}
