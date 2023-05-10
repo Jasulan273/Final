@@ -3,6 +3,7 @@ import { ComposableMap, Geographies, Geography, Marker } from "react-simple-maps
 import countriesData from "./countriesData";
 import "./Map.css";
 import { withTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import './18n';
 import Modal from 'react-modal';
 
@@ -10,6 +11,12 @@ import Modal from 'react-modal';
 const geoUrl = "https://raw.githubusercontent.com/deldersveld/topojson/master/continents/europe.json";
 
 const EuropeMap = () => {
+  const { t, i18n } = useTranslation();
+
+  const changeLanguage = (language) => {
+
+    i18n.changeLanguage(language);
+  };
   const [mapUrl, setMapUrl] = React.useState('');
 
   const openMapModal = (url) => {
@@ -103,11 +110,11 @@ const EuropeMap = () => {
               <h3>Valley Hostel</h3>
               <p>Fuhren, 3822 Лаутербруннен, Швейцария</p>
               <ul className="advantages-list">
-                <li>Бесплатная парковка</li>
-                <li>Бесплатный Wi-Fi</li>
-                <li>Семейные номера</li>
-                <li>Номера для некурящих</li>
-                <li>Хороший завтрак</li>
+                <li>{t('freeParking')}</li>
+                <li>{t('freeWifi')}</li>
+                <li>{t('familyRooms')}</li>
+                <li>{t('nonSmokingRooms')}</li>
+                <li>{t('greatBreakfast')}</li>
               </ul>
               <div className="button-group">
                 <a href="https://www.booking.com/Share-wbPRSI" target="_blank" rel="noopener noreferrer">
@@ -123,7 +130,18 @@ const EuropeMap = () => {
                     openMapModal(e.target.href);
                   }}
                 >
-                  View on Map
+                  {t('View-on-Map')}
+                </a>
+                <a
+                  href="https://www.google.com/maps/embed?pb=!4v1683745417513!6m8!1m7!1sCAoSK0FGMVFpcFBGTmRENm5pX3B1WmoxX0ZVd0F2SUtFUWllaEhfZDlEd3JFWUE.!2m2!1d46.5961891!2d7.907934200000001!3f184.6621303870844!4f-23.602452732277285!5f0.4000000000000002"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    openMapModal(e.target.href);
+                  }}
+                >
+                  Панорама
                 </a>
 
                 <GoogleMapModal mapUrl={mapUrl} closeModal={closeModal} />
@@ -137,11 +155,12 @@ const EuropeMap = () => {
               <h3>City Hotel Biel Bienne</h3>
               <p>Aarbergstrasse 29, 2502 Биль, Швейцария</p>
               <ul className="advantages-list">
-                <li>Бесплатная парковка</li>
-                <li>Бесплатный Wi-Fi</li>
-                <li>Номера для некурящих</li>
-                <li>Кофеварка/чайник во всех номерах</li>
-                <li>Очень хороший завтрак</li>
+                <li>{t('freeParking')}</li>
+                <li>{t('freeWifi')}</li>
+                <li>{t('nonSmokingRooms')}</li>
+                <li>{t('coffeeTeaFacilities')}</li>
+                <li>{t('greatBreakfast')}</li>
+
               </ul>
               <div className="button-group">
                 <a href="https://www.booking.com/Share-dj5glE" target="_blank" rel="noopener noreferrer">
@@ -156,8 +175,20 @@ const EuropeMap = () => {
                     openMapModal(e.target.href);
                   }}
                 >
-                  View on Map
+                  {t('View-on-Map')}
                 </a>
+                <a
+  href="https://www.google.com/maps/embed?pb=!4v1683746791040!6m8!1m7!1sCAoSLEFGMVFpcFBsNHFaOUE3QkZveHFiclg0aVdYZmM2VE91aUFyVEZnUlluRXRp!2m2!1d47.13081917!2d7.23925561!3f314.4822912053373!4f-14.642282349611719!5f0.7820865974627469"
+  target="_blank"
+  rel="noopener noreferrer"
+  onClick={(e) => {
+    e.preventDefault();
+    openMapModal(e.target.href);
+  }}
+>
+  Панорама
+</a>
+
               </div>
             </div>
 
@@ -165,16 +196,17 @@ const EuropeMap = () => {
               <h3>Dorint Blüemlisalp Beatenberg/Interlaken</h3>
               <p>Schmockenstrasse 163, 3803 Беатенберг, Швейцария</p>
               <ul className="advantages-list">
-                <li>Крытый бассейн</li>
-                <li>Спа и оздоровительный центр</li>
-                <li>Бесплатная парковка</li>
-                <li>Семейные номера</li>
-                <li>Бесплатный Wi-Fi</li>
-                <li>Номера для некурящих</li>
-                <li>Ресторан</li>
-                <li>Фитнес-центр</li>
-                <li>Бар</li>
-                <li>Потрясающий завтрак</li>
+                <li>{t('indoorPool')}</li>
+                <li>{t('spaAndWellnessCenter')}</li>
+                <li>{t('freeParking')}</li>
+                <li>{t('familyRooms')}</li>
+                <li>{t('freeWifi')}</li>
+                <li>{t('nonSmokingRooms')}</li>
+                <li>{t('restaurant')}</li>
+                <li>{t('fitnessCenter')}</li>
+                <li>{t('bar')}</li>
+                <li>{t('amazingBreakfast')}</li>
+
               </ul>
               <div className="button-group">
                 <a href="https://www.booking.com/Share-G6rzVw" target="_blank" rel="noopener noreferrer">
@@ -189,18 +221,31 @@ const EuropeMap = () => {
                     openMapModal(e.target.href);
                   }}
                 >
-                  View on Map
+                  {t('View-on-Map')}
                 </a>
+                <a
+  href="https://www.google.com/maps/embed?pb=!4v1683747037021!6m8!1m7!1sCAoSLEFGMVFpcE1iZE5Pc3RPbS1qajJUUmpRZjRzUUtzSFllR2FING9ycFF5cnhN!2m2!1d46.6896576!2d7.773344900000001!3f9.788091126952503!4f0!5f0.7820865974627469"
+  target="_blank"
+  rel="noopener noreferrer"
+  onClick={(e) => {
+    e.preventDefault();
+    openMapModal(e.target.href);
+  }}
+>
+  Панорама
+</a>
+
               </div>
             </div>
             <div className="country-card">
               <h3>Hotel Alpina</h3>
               <p>Äussere Dorfstrasse 92, 3718 Кандерштег, Швейцария</p>
               <ul className="advantages-list">
-                <li>Бесплатная парковка</li>
-                <li>Бесплатный Wi-Fi</li>
-                <li>Семейные номера</li>
-                <li>Номера для некурящих</li>
+                <li>{t('freeParking')}</li>
+                <li>{t('freeWifi')}</li>
+                <li>{t('familyRooms')}</li>
+                <li>{t('nonSmokingRooms')}</li>
+
               </ul>
               <div className="button-group">
                 <a href="https://www.booking.com/Share-0TeJaT" target="_blank" rel="noopener noreferrer">
@@ -215,8 +260,20 @@ const EuropeMap = () => {
                     openMapModal(e.target.href);
                   }}
                 >
-                  View on Map
+                  {t('View-on-Map')}
                 </a>
+                <a
+  href="https://www.google.com/maps/embed?pb=!4v1683747054523!6m8!1m7!1sCAoSLEFGMVFpcE1sTFlVTDlETHFPaHRNTm85ZllIMWhpYW1fR3VXTUpxRGF2aVNQ!2m2!1d46.500231!2d7.676407999999999!3f96.44309026332218!4f0!5f0.7820865974627469"
+  target="_blank"
+  rel="noopener noreferrer"
+  onClick={(e) => {
+    e.preventDefault();
+    openMapModal(e.target.href);
+  }}
+>
+  Панорама
+</a>
+
               </div>
             </div>
 
@@ -224,15 +281,16 @@ const EuropeMap = () => {
               <h3>Hôtel Le Grand Chalet</h3>
               <p>Chemin de la Source 2, 1854 Лезен, Швейцария</p>
               <ul className="advantages-list">
-                <li>Бесплатная парковка</li>
-                <li>Бесплатный Wi-Fi</li>
-                <li>Семейные номера</li>
-                <li>Номера для некурящих</li>
-                <li>Трансфер от/до аэропорта</li>
-                <li>Ресторан</li>
-                <li>Удобства для гостей с ограниченными физическими возможностями</li>
-                <li>Бар</li>
-                <li>Превосходный завтрак</li>
+                <li>{t('freeParking')}</li>
+                <li>{t('freeWifi')}</li>
+                <li>{t('familyRooms')}</li>
+                <li>{t('nonSmokingRooms')}</li>
+                <li>{t('airportTransfer')}</li>
+                <li>{t('restaurant')}</li>
+                <li>{t('disabledFacilities')}</li>
+                <li>{t('bar')}</li>
+                <li>{t('excellentBreakfast')}</li>
+
               </ul>
               <div className="button-group">
                 <a href="https://www.booking.com/Share-BRMgDK0" target="_blank" rel="noopener noreferrer">
@@ -248,8 +306,20 @@ const EuropeMap = () => {
                     openMapModal(e.target.href);
                   }}
                 >
-                  View on Map
+                  {t('View-on-Map')}
                 </a>
+                <a
+  href="https://www.google.com/maps/embed?pb=!4v1683747077844!6m8!1m7!1sCAoSLEFGMVFpcE9HaUc4cjNYNjJ6M2QzZEJmdFV0NERoRkZBTllaLWhsN2s0WjA0!2m2!1d46.34705270358414!2d7.0116641199111855!3f129.71033669849942!4f0!5f0.7820865974627469"
+  target="_blank"
+  rel="noopener noreferrer"
+  onClick={(e) => {
+    e.preventDefault();
+    openMapModal(e.target.href);
+  }}
+>
+  Панорама
+</a>
+
               </div>
             </div>
 
@@ -257,16 +327,17 @@ const EuropeMap = () => {
               <h3>Eurotel Montreux</h3>
               <p>Grand Rue 81, 1820 Монтрё, Швейцария</p>
               <ul className="advantages-list">
-                <li>Частная парковка</li>
-                <li>Спа и оздоровительный центр</li>
-                <li>Бесплатный Wi-Fi</li>
-                <li>Семейные номера</li>
-                <li>Ресторан</li>
-                <li>Фитнес-центр</li>
-                <li>Номера для некурящих</li>
-                <li>Доставка еды и напитков в номер</li>
-                <li>Бар</li>
-                <li>Очень хороший завтрак</li>
+                <li>{t('privateParking')}</li>
+                <li>{t('spaAndWellnessCenter')}</li>
+                <li>{t('freeWifi')}</li>
+                <li>{t('familyRooms')}</li>
+                <li>{t('restaurant')}</li>
+                <li>{t('fitnessCenter')}</li>
+                <li>{t('nonSmokingRooms')}</li>
+                <li>{t('roomService')}</li>
+                <li>{t('bar')}</li>
+                <li>{t('greatBreakfast')}</li>
+
               </ul>
               <div className="button-group">
                 <a href="https://www.booking.com/Share-b0IyNn" target="_blank" rel="noopener noreferrer">
@@ -281,8 +352,20 @@ const EuropeMap = () => {
                     openMapModal(e.target.href);
                   }}
                 >
-                  View on Map
+                  {t('View-on-Map')}
                 </a>
+                <a
+  href="https://www.google.com/maps/embed?pb=!4v1683747150688!6m8!1m7!1sCAoSLEFGMVFpcFA3dUo0Y05qR05tVTBnMTlQQmlQNDc1REFkMlV3TUxoY2ppTE9n!2m2!1d46.43660869327235!2d6.908080892845533!3f47.90316652493166!4f-4.08339097560517!5f0.7820865974627469"
+  target="_blank"
+  rel="noopener noreferrer"
+  onClick={(e) => {
+    e.preventDefault();
+    openMapModal(e.target.href);
+  }}
+>
+  Панорама
+</a>
+
               </div>
             </div>
             {/* Add other country cards as needed */}
@@ -305,9 +388,10 @@ const EuropeMap = () => {
               <h3>Hotel Rural Era de la Corte - Adults only</h3>
               <p>La Corte, 1, 35630 Антигуа, Испания</p>
               <ul className="advantages-list">
-                <li>Бесплатный Wi-Fi</li>
-                <li>Номера для некурящих</li>
-                <li>Бесплатная парковка</li>
+                <li>{t('freeWifi')}</li>
+                <li>{t('nonSmokingRooms')}</li>
+                <li>{t('freeParking')}</li>
+
               </ul>
               <div className="button-group">
                 <a href="https://www.booking.com/Share-M9Tn6Qm" target="_blank" rel="noopener noreferrer">
@@ -322,8 +406,19 @@ const EuropeMap = () => {
                     openMapModal(e.target.href);
                   }}
                 >
-                  View on Map
+                  {t('View-on-Map')}
                 </a>
+                <a
+  href="https://www.google.com/maps/embed?pb=!4v1683747250777!6m8!1m7!1sCAoSLEFGMVFpcE0tbGxZMGpKVDUzOVFua2NhLVJkMWFuMGFPcERmN0ZoNlVDLWVz!2m2!1d28.411244628993167!2d-14.011936383769998!3f195.60382847494316!4f0!5f0.7820865974627469"
+  target="_blank"
+  rel="noopener noreferrer"
+  onClick={(e) => {
+    e.preventDefault();
+    openMapModal(e.target.href);
+  }}
+>
+  Панорама
+</a>
 
                 <GoogleMapModal mapUrl={mapUrl} closeModal={closeModal} />
               </div>
@@ -333,15 +428,14 @@ const EuropeMap = () => {
               <h3>Aparthotel Puerto Cala Vadella</h3>
               <p>Playa de Cala Vadella, 07830 Кала-Ваделья, Испания</p>
               <ul className="advantages-list">
-                <li>Открытый бассейн</li>
-                <li>Пляж (первая линия)</li>
-                <li>Семейные номера</li>
-                <li>Бесплатный Wi-Fi</li>
-                <li>Номера для некурящих</li>
-                <li>Доставка еды и напитков в номер</li>
-                <li>Ресторан</li>
-                <li>Бар</li>
-                <li>Потрясающий завтрак</li>
+                <li>{t('indoorPool')}</li>
+                <li>{t('familyRooms')}</li>
+                <li>{t('freeWifi')}</li>
+                <li>{t('nonSmokingRooms')}</li>
+                <li>{t('deliveryToRoom')}</li>
+                <li>{t('restaurant')}</li>
+                <li>{t('bar')}</li>
+                <li>{t('amazingBreakfast')}</li>
               </ul>
               <div className="button-group">
                 <a href="https://www.booking.com/Share-m1D69T" target="_blank" rel="noopener noreferrer">
@@ -356,8 +450,20 @@ const EuropeMap = () => {
                     openMapModal(e.target.href);
                   }}
                 >
-                  View on Map
+                  {t('View-on-Map')}
                 </a>
+                <a
+  href="https://www.google.com/maps/embed?pb=!4v1683747270477!6m8!1m7!1sCAoSLEFGMVFpcFBDekdHTzVCbldRVEFNMlVZWW44dGVlam5OVFlURWpvcmtPZVdB!2m2!1d38.914198337793!2d1.225313222038!3f70.08269616729446!4f0!5f0.7820865974627469"
+  target="_blank"
+  rel="noopener noreferrer"
+  onClick={(e) => {
+    e.preventDefault();
+    openMapModal(e.target.href);
+  }}
+>
+  Панорама
+</a>
+
               </div>
             </div>
 
@@ -365,16 +471,15 @@ const EuropeMap = () => {
               <h3>hotel finca GA7COLORES only adult</h3>
               <p>Calle el Arroyo 59 Villa los molinos, 35559 Montaña Blanca, Испания</p>
               <ul className="advantages-list">
-                <li>Открытый бассейн</li>
-                <li>Номера для некурящих</li>
-                <li>Трансфер от/до аэропорта (бесплатный)</li>
-                <li>Бесплатный Wi-Fi</li>
-                <li>Бесплатная парковка</li>
-                <li>Ресторан</li>
-                <li>Доставка еды и напитков в номер</li>
-                <li>Кофеварка/чайник во всех номерах</li>
-                <li>Бар</li>
-                <li>Великолепный завтрак</li>
+                <li>{t('nonSmokingRooms')}</li>
+                <li>{t('airportShuttle')}</li>
+                <li>{t('freeWifi')}</li>
+                <li>{t('freeParking')}</li>
+                <li>{t('restaurant')}</li>
+                <li>{t('deliveryToRoom')}</li>
+                <li>{t('coffeeTeaFacilities')}</li>
+                <li>{t('bar')}</li>
+                <li>{t('excellentBreakfast')}</li>
               </ul>
               <div className="button-group">
                 <a href="https://www.booking.com/Share-90CTqo" target="_blank" rel="noopener noreferrer">
@@ -389,18 +494,31 @@ const EuropeMap = () => {
                     openMapModal(e.target.href);
                   }}
                 >
-                  View on Map
+                  {t('View-on-Map')}
                 </a>
+                <a
+  href="https://www.google.com/maps/embed?pb=!4v1683747337648!6m8!1m7!1sCAoSLEFGMVFpcE9Fd0stMTRCNXpRYzIybkJyNHlDSXFoRkR1U2U3NzJBQWs5clJU!2m2!1d29.0223682!2d-13.7929929!3f168.16182155513818!4f-8.613785998270245!5f0.7820865974627469"
+  target="_blank"
+  rel="noopener noreferrer"
+  onClick={(e) => {
+    e.preventDefault();
+    openMapModal(e.target.href);
+  }}
+>
+  Панорама
+</a>
+
               </div>
             </div>
             <div className="country-card">
               <h3>El Time</h3>
               <p>Camino Medel, 3 La Punta - La Costa, 38780 Тихарафе, Испания</p>
               <ul className="advantages-list">
-                <li>Открытый бассейн</li>
-                <li>Бесплатный Wi-Fi</li>
-                <li>Бесплатная парковка</li>
-                <li>Номера для некурящих</li>
+
+                <li>{t('freeWifi')}</li>
+                <li>{t('freeParking')}</li>
+                <li>{t('nonSmokingRooms')}</li>
+
               </ul>
               <div className="button-group">
                 <a href="https://www.booking.com/Share-DyYoot" target="_blank" rel="noopener noreferrer">
@@ -415,8 +533,20 @@ const EuropeMap = () => {
                     openMapModal(e.target.href);
                   }}
                 >
-                  View on Map
+                  {t('View-on-Map')}
                 </a>
+                <a
+  href="https://www.google.com/maps/embed?pb=!4v1683747502422!6m8!1m7!1sCAoSLEFGMVFpcE1peExtWERQRExSaHlDSmx6NE9lOHpGRE9lZGZaQmJLYXZvM2dr!2m2!1d28.665723!2d-17.9416859!3f304.45452225583705!4f-19.18856904816188!5f0.4000000000000002"
+  target="_blank"
+  rel="noopener noreferrer"
+  onClick={(e) => {
+    e.preventDefault();
+    openMapModal(e.target.href);
+  }}
+>
+  Панорама
+</a>
+
               </div>
             </div>
 
@@ -424,15 +554,14 @@ const EuropeMap = () => {
               <h3>Villa Le Blanc, a Gran Meliá Hotel - The Leading Hotels of The World</h3>
               <p>Playa de Santo Tomás s/n, 07749 Санто-Томас, Испания</p>
               <ul className="advantages-list">
-                <li>Открытый бассейн</li>
-                <li>Спа и оздоровительный центр</li>
-                <li>Номера для некурящих</li>
-                <li>Пляж (первая линия)</li>
-                <li>Доставка еды и напитков в номер</li>
-                <li>Ресторан</li>
-                <li>Фитнес-центр</li>
-                <li>Семейные номера</li>
-                <li>Бар</li>
+                <li>{t('spaAndWellnessCenter')}</li>
+                <li>{t('nonSmokingRooms')}</li>
+                <li>{t('deliveryToRoom')}</li>
+                <li>{t('restaurant')}</li>
+                <li>{t('fitnessCenter')}</li>
+                <li>{t('familyRooms')}</li>
+                <li>{t('bar')}</li>
+
               </ul>
               <div className="button-group">
                 <a href="https://www.booking.com/Share-dtKXT5" target="_blank" rel="noopener noreferrer">
@@ -447,8 +576,20 @@ const EuropeMap = () => {
                     openMapModal(e.target.href);
                   }}
                 >
-                  View on Map
+                  {t('View-on-Map')}
                 </a>
+                <a
+  href="https://www.google.com/maps/embed?pb=!4v1683747525944!6m8!1m7!1sCAoSLEFGMVFpcFA4VHRYZ3lic1piYUc3bk1OT215bmw2QlRfVEhpa1pld0l1RDh4!2m2!1d39.9159198!2d4.0365443!3f47.946060778412516!4f0!5f0.7820865974627469"
+  target="_blank"
+  rel="noopener noreferrer"
+  onClick={(e) => {
+    e.preventDefault();
+    openMapModal(e.target.href);
+  }}
+>
+  Панорама
+</a>
+
               </div>
             </div>
           </div>
@@ -469,16 +610,16 @@ const EuropeMap = () => {
               <h3>Château de Champblanc</h3>
               <p> 12 rue de l abreuvoir Cherves-Richemont, 16370 Cherves-de-Cognac, Франция</p>
               <ul className="advantages-list">
-                <li>Открытый бассейн</li>
-                <li>Ресторан</li>
-                <li>Номера для некурящих</li>
-                <li>Трансфер от/до аэропорта (бесплатный)</li>
-                <li>Доставка еды и напитков в номер</li>
-                <li>Бесплатная парковка</li>
-                <li>Бесплатный Wi-Fi</li>
-                <li>Кофеварка/чайник во всех номерах</li>
-                <li>Бар</li>
-                <li>Превосходный завтрак</li>
+                <li>{t('outdoorPool')}</li>
+                <li>{t('restaurant')}</li>
+                <li>{t('nonSmokingRooms')}</li>
+                <li>{t('airportShuttle')}</li>
+                <li>{t('deliveryToRoom')}</li>
+                <li>{t('freeParking')}</li>
+                <li>{t('freeWifi')}</li>
+                <li>{t('coffeeTeaFacilities')}</li>
+                <li>{t('bar')}</li>
+                <li>{t('excellentBreakfast')}</li>
               </ul>
               <div className="button-group">
                 <a href="https://www.booking.com/Share-eu9iuR" target="_blank" rel="noopener noreferrer">
@@ -493,7 +634,18 @@ const EuropeMap = () => {
                     openMapModal(e.target.href);
                   }}
                 >
-                  View on Map
+                  {t('View-on-Map')}
+                </a>
+                <a
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    openMapModal(e.target.href);
+                  }}
+                >
+                  Панорамы нет
                 </a>
                 <GoogleMapModal mapUrl={mapUrl} closeModal={closeModal} />
               </div>
@@ -502,12 +654,13 @@ const EuropeMap = () => {
               <h3>Domaine de Montboulard</h3>
               <p>  Montboulard, 16800 Soyaux, Франция</p>
               <ul className="advantages-list">
-                <li>Открытый бассейн</li>
-                <li>Номера для некурящих</li>
-                <li>Бесплатная парковка</li>
-                <li>Бесплатный Wi-Fi</li>
-                <li>Семейные номера</li>
-                <li>Превосходный завтрак</li>
+                <li>{t('outdoorPool')}</li>
+                <li>{t('nonSmokingRooms')}</li>
+                <li>{t('freeParking')}</li>
+                <li>{t('freeWifi')}</li>
+                <li>{t('familyRooms')}</li>
+                <li>{t('excellentBreakfast')}</li>
+
               </ul>
               <div className="button-group">
                 <a href="https://www.booking.com/Share-7xUPKU" target="_blank" rel="noopener noreferrer">
@@ -522,7 +675,18 @@ const EuropeMap = () => {
                     openMapModal(e.target.href);
                   }}
                 >
-                  View on Map
+                  {t('View-on-Map')}
+                </a>
+                <a
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    openMapModal(e.target.href);
+                  }}
+                >
+                  Панорамы нет
                 </a>
               </div>
             </div>
@@ -530,10 +694,10 @@ const EuropeMap = () => {
               <h3>Le Petit Parisien - Au Cœur de Montparnasse</h3>
               <p> 14 Rue campagne premiere, 14-й округ: Монпарнас, 75014 Париж, Франция</p>
               <ul className="advantages-list">
-                <li>Бесплатный Wi-Fi</li>
-                <li>Номера для некурящих</li>
-                <li>Лифт</li>
-                <li>Отопление</li>
+                <li>{t('freeWifi')}</li>
+                <li>{t('nonSmokingRooms')}</li>
+                <li>{t('elevator')}</li>
+
               </ul>
               <div className="button-group">
                 <a href="https://www.booking.com/Share-x9jgqO" target="_blank" rel="noopener noreferrer">
@@ -548,7 +712,18 @@ const EuropeMap = () => {
                     openMapModal(e.target.href);
                   }}
                 >
-                  View on Map
+                  {t('View-on-Map')}
+                </a>
+                <a
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    openMapModal(e.target.href);
+                  }}
+                >
+                  Панорамы нет
                 </a>
               </div>
             </div>
@@ -556,12 +731,13 @@ const EuropeMap = () => {
               <h3>La Cachette du Comte</h3>
               <p> 2 Grande Rue, 83570 Montfort-sur-Argens, Франция</p>
               <ul className="advantages-list">
-                <li>Бесплатная парковка</li>
-                <li>Номера для некурящих</li>
-                <li>Кофеварка/чайник во всех номерах</li>
-                <li>Бесплатный Wi-Fi</li>
-                <li>Семейные номера</li>
-                <li>Превосходный завтрак</li>
+                <li>{t('freeParking')}</li>
+                <li>{t('nonSmokingRooms')}</li>
+                <li>{t('coffeeTeaFacilities')}</li>
+                <li>{t('freeWifi')}</li>
+                <li>{t('familyRooms')}</li>
+                <li>{t('excellentBreakfast')}</li>
+
               </ul>
               <div className="button-group">
                 <a href="https://www.booking.com/Share-NSa0m9" target="_blank" rel="noopener noreferrer">
@@ -576,16 +752,29 @@ const EuropeMap = () => {
                     openMapModal(e.target.href);
                   }}
                 >
-                  View on Map
+                  {t('View-on-Map')}
                 </a>
+                <a
+  href="https://www.google.com/maps/embed?pb=!4v1683747861342!6m8!1m7!1sCAoSLEFGMVFpcE5IMFV5X01iNW9sQjdPaV9vMk1mN3lfT045MEp5dGJWWkR4WTZG!2m2!1d48.83984201704956!2d2.332874327874265!3f196.3055604934138!4f-37.07511313744893!5f0.7820865974627469"
+  target="_blank"
+  rel="noopener noreferrer"
+  onClick={(e) => {
+    e.preventDefault();
+    openMapModal(e.target.href);
+  }}
+>
+  Панорама
+</a>
+
               </div>
             </div>
             <div className="country-card">
               <h3>Charming loft in Paris marais district</h3>
               <p>147 Rue du Temple, 3-й округ: Маре, 75003 Париж, Франция</p>
               <ul className="advantages-list">
-                <li>Бесплатный Wi-Fi</li>
-                <li>Семейные номера</li>
+                <li>{t('freeWifi')}</li>
+                <li>{t('familyRooms')}</li>
+
               </ul>
               <div className="button-group">
                 <a href="https://www.booking.com/Share-RBikq0" target="_blank" rel="noopener noreferrer">
@@ -600,8 +789,20 @@ const EuropeMap = () => {
                     openMapModal(e.target.href);
                   }}
                 >
-                  View on Map
+                  {t('View-on-Map')}
                 </a>
+                <a
+  href="https://www.google.com/maps/embed?pb=!4v1683747888466!6m8!1m7!1sCAoSLEFGMVFpcFBvYXNqelVHUTQwXzJfX1JpOTJ3d21jTk9wOXE0WXZmX2Z5WVFw!2m2!1d48.86057000494!2d2.3542204227018!3f289.2943514314971!4f-11.599057173229937!5f0.7820865974627469"
+  target="_blank"
+  rel="noopener noreferrer"
+  onClick={(e) => {
+    e.preventDefault();
+    openMapModal(e.target.href);
+  }}
+>
+  Панорама
+</a>
+
               </div>
             </div>
             <div className="popup-scroll">
@@ -625,15 +826,15 @@ const EuropeMap = () => {
             <div class="country-card">
               <h3>Località Frejusia, 10052 Бардонеккья, Италия</h3>
               <ul class="advantages-list">
-                <li>2 бассейна</li>
-                <li>Спа и оздоровительный центр</li>
-                <li>Бесплатная парковка</li>
-                <li>Семейные номера</li>
-                <li>Ресторан</li>
-                <li>Катание на лыжах</li>
-                <li>Фитнес-центр</li>
-                <li>Бар</li>
-                <li>Потрясающий завтрак</li>
+                <li>{t('spaAndWellnessCenter')}</li>
+                <li>{t('freeParking')}</li>
+                <li>{t('familyRooms')}</li>
+                <li>{t('restaurant')}</li>
+                <li>{t('skiing')}</li>
+                <li>{t('fitnessCenter')}</li>
+                <li>{t('bar')}</li>
+                <li>{t('amazingBreakfast')}</li>
+
               </ul>
               <div class="button-group">
                 <a href="https://www.booking.com/Share-Sh7CNg" target="_blank" rel="noopener noreferrer">
@@ -648,22 +849,35 @@ const EuropeMap = () => {
                     openMapModal(e.target.href);
                   }}
                 >
-                  View on Map
+                  {t('View-on-Map')}
                 </a>
+                <a
+  href="https://www.google.com/maps/embed?pb=!4v1683748017671!6m8!1m7!1sCAoSLEFGMVFpcFBzVzEyV0RNOFk2WW1DVTdOQm9xWTEyeHJNSzlKRWQ3STJQOU1s!2m2!1d45.08509622111777!2d6.734642616744566!3f348.8200541099121!4f-7.218200628364343!5f0.7820865974627469"
+  target="_blank"
+  rel="noopener noreferrer"
+  onClick={(e) => {
+    e.preventDefault();
+    openMapModal(e.target.href);
+  }}
+>
+  Панорама
+</a>
+
                 <GoogleMapModal mapUrl={mapUrl} closeModal={closeModal} />
               </div>
             </div>
             <div class="country-card">
               <h3>B&B Hotel La Piana, Via Buggiano Colle 8, 51011 Борго-а-Буджано, Италия</h3>
               <ul class="advantages-list">
-                <li>Открытый бассейн</li>
-                <li>Бесплатная парковка</li>
-                <li>Номера для некурящих</li>
-                <li>Бесплатный Wi-Fi</li>
-                <li>Семейные номера</li>
-                <li>Кофеварка/чайник во всех номерах</li>
-                <li>Бар</li>
-                <li>Превосходный завтрак</li>
+                <li>{t('outdoorPool')}</li>
+                <li>{t('freeParking')}</li>
+                <li>{t('nonSmokingRooms')}</li>
+                <li>{t('freeWifi')}</li>
+                <li>{t('familyRooms')}</li>
+                <li>{t('coffeeTeaFacilities')}</li>
+                <li>{t('bar')}</li>
+                <li>{t('excellentBreakfast')}</li>
+
               </ul>
               <div class="button-group">
                 <a href="https://www.booking.com/Share-mmTc7d" target="_blank" rel="noopener noreferrer">
@@ -678,22 +892,35 @@ const EuropeMap = () => {
                     openMapModal(e.target.href);
                   }}
                 >
-                  View on Map
+                  {t('View-on-Map')}
                 </a>
+                <a
+  href="https://www.google.com/maps/embed?pb=!4v1683748017671!6m8!1m7!1sCAoSLEFGMVFpcFBzVzEyV0RNOFk2WW1DVTdOQm9xWTEyeHJNSzlKRWQ3STJQOU1s!2m2!1d45.08509622111777!2d6.734642616744566!3f348.8200541099121!4f-7.218200628364343!5f0.7820865974627469"
+  target="_blank"
+  rel="noopener noreferrer"
+  onClick={(e) => {
+    e.preventDefault();
+    openMapModal(e.target.href);
+  }}
+>
+  Панорама
+</a>
+
               </div>
             </div>
             <div class="country-card">
               <h3>Agri Resort & SPA Le Colline del Paradiso, Via del Viliani 756, 50036 Vaglia, Италия</h3>
               <ul class="advantages-list">
-                <li>Открытый бассейн</li>
-                <li>Бесплатнаяпарковка</li>
-                <li>Ресторан</li>
-                <li>Номера для некурящих</li>
-                <li>Спа и оздоровительный центр</li>
-                <li>Бесплатный Wi-Fi</li>
-                <li>Семейные номера</li>
-                <li>Бар</li>
-                <li>Очень хороший завтрак</li>
+                <li>{t('outdoorPool')}</li>
+                <li>{t('freeParking')}</li>
+                <li>{t('restaurant')}</li>
+                <li>{t('nonSmokingRooms')}</li>
+                <li>{t('spaAndWellnessCenter')}</li>
+                <li>{t('freeWifi')}</li>
+                <li>{t('familyRooms')}</li>
+                <li>{t('bar')}</li>
+                <li>{t('greatBreakfast')}</li>
+
               </ul>
               <div class="button-group">
                 <a href="https://www.booking.com/Share-8TrFtR" target="_blank" rel="noopener noreferrer">
@@ -708,7 +935,18 @@ const EuropeMap = () => {
                     openMapModal(e.target.href);
                   }}
                 >
-                  View on Map
+                  {t('View-on-Map')}
+                </a>
+                <a
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    openMapModal(e.target.href);
+                  }}
+                >
+                  Панорамы нет
                 </a>
               </div>
 
@@ -716,16 +954,17 @@ const EuropeMap = () => {
             <div class="country-card">
               <h3>Antico Borgo, Via Sassari 7, 08020 Гальтелли, Италия</h3>
               <ul class="advantages-list">
-                <li>Номера для некурящих</li>
-                <li>Трансфер от/до аэропорта</li>
-                <li>Ресторан</li>
-                <li>Бесплатный Wi-Fi</li>
-                <li>Бесплатная парковка</li>
-                <li>Доставка еды и напитков в номер</li>
-                <li>Удобства для гостей с ограниченными физическими возможностями</li>
-                <li>Семейные номера</li>
-                <li>Бар</li>
-                <li>Хороший завтрак</li>
+                <li>{t('nonSmokingRooms')}</li>
+                <li>{t('airportShuttle')}</li>
+                <li>{t('restaurant')}</li>
+                <li>{t('freeWifi')}</li>
+                <li>{t('freeParking')}</li>
+                <li>{t('roomService')}</li>
+                <li>{t('disabledFacilities')}</li>
+                <li>{t('familyRooms')}</li>
+                <li>{t('bar')}</li>
+                <li>{t('greatBreakfast')}</li>
+
               </ul>
               <div class="button-group">
                 <a href="https://www.booking.com/Share-1RzRWX" target="_blank" rel="noopener noreferrer">
@@ -740,18 +979,31 @@ const EuropeMap = () => {
                     openMapModal(e.target.href);
                   }}
                 >
-                  View on Map
+                  {t('View-on-Map')}
                 </a>
+                <a
+  href="https://www.google.com/maps/embed?pb=!4v1683748113653!6m8!1m7!1sCAoSLEFGMVFpcE91R2w1Wml2RWdrN0VaQTZ0UzREVGdaT1hyNUtrTnZrdjNaUmZi!2m2!1d40.3860883!2d9.6163416!3f189.86539314559698!4f0!5f0.7820865974627469"
+  target="_blank"
+  rel="noopener noreferrer"
+  onClick={(e) => {
+    e.preventDefault();
+    openMapModal(e.target.href);
+  }}
+>
+  Панорама
+</a>
+
               </div>
             </div>
             <div class="country-card">
               <h3>Casa d'Era Country Holiday Houses, Via Bellavista 10, 56030 Лаятико, Италия</h3>
               <ul class="advantages-list">
-                <li>Открытый бассейн</li>
-                <li>Номера для некурящих</li>
-                <li>Бесплатная парковка</li>
-                <li>Бесплатный Wi-Fi</li>
-                <li>Семейные номера</li>
+                <li>{t('outdoorPool')}</li>
+                <li>{t('nonSmokingRooms')}</li>
+                <li>{t('freeParking')}</li>
+                <li>{t('freeWifi')}</li>
+                <li>{t('familyRooms')}</li>
+
               </ul>
               <div class="button-group">
                 <a href="https://www.booking.com/Share-SqJ2lQ" target="_blank" rel="noopener noreferrer">
@@ -766,8 +1018,20 @@ const EuropeMap = () => {
                     openMapModal(e.target.href);
                   }}
                 >
-                  View on Map
+                  {t('View-on-Map')}
                 </a>
+                <a
+  href="https://www.google.com/maps/embed?pb=!4v1683748127208!6m8!1m7!1sCAoSLEFGMVFpcE4yVi0zZjR1NFVubHVyaTVnQWFDUlFDajZXRG9od3VzRGR3Z3hx!2m2!1d43.4857178!2d10.7431456!3f332.9100011014968!4f4.976519488479653!5f0.7820865974627469"
+  target="_blank"
+  rel="noopener noreferrer"
+  onClick={(e) => {
+    e.preventDefault();
+    openMapModal(e.target.href);
+  }}
+>
+  Панорама
+</a>
+
               </div>
             </div>
 

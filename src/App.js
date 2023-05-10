@@ -3,9 +3,9 @@ import { useTranslation } from 'react-i18next';
 import { Link, animateScroll as scroll } from "react-scroll";
 import { withTranslation } from 'react-i18next';
 import "../src/styles/style.css"
-import background from "./image/background.png"
+import background from "./image/backgroud_photo.png"
 import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
-import { MainContainer, ChatContainer, MessageList, Message, MessageInput, TypingIndicator } from '@chatscope/chat-ui-kit-react';
+import { MainContainer, ChatContainer, MessageList, Message, MessageInput, TypingIndicator, InputField } from '@chatscope/chat-ui-kit-react';
 import logo from "./image/logo.png"
 import instagram from "./image/instagram.png"
 import whatsapp from "./image/whatsapp.png"
@@ -14,6 +14,7 @@ import icon1 from "./image/icon_1.png"
 import icon2 from "./image/icon_2.png"
 import icon3 from "./image/icon_3.png"
 import chatBotButton from "./image/chatbot.png"
+import formBackground from "./image/form_panel_background.png"
 import './18n';
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
@@ -26,6 +27,8 @@ const API_KEY = process.env.REACT_APP_SECRET_KEY;
 const systemMessage = { //  Explain things like you're talking to a software professional with 5 years of experience.
     "role": "system", "content": "Explain things like you're talking to a software professional with 2 years of experience."
 }
+
+
 
 
 
@@ -83,7 +86,6 @@ const App = () => {
 
 
     }
-
 
     const [messages, setMessages] = useState([
         {
@@ -148,6 +150,7 @@ const App = () => {
                 setIsTyping(false);
             });
     }
+    
     const [formDisplay, setFormDisplay] = useState(false);
 
     const toggleForm = () => {
@@ -157,7 +160,7 @@ const App = () => {
         <div className='App'>
 
             <link rel="preconnect" href="https://fonts.googleapis.com" />
-            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
             <link href="https://fonts.googleapis.com/css2?family=Jura:wght@300;400;500;600;700&family=Oswald:wght@200;300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
             <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-element-bundle.min.js"></script>
@@ -207,7 +210,7 @@ const App = () => {
                     <div className="header_main">
                         <h1>GPT tour</h1>
                         <h2>{t('header_slogan')}</h2>
-                        <div class="social_media">
+                        <div className="social_media">
                             <a href="https://wa.me/+77006721042" target="_blank"><img src={whatsapp} alt="" /></a>
                             <a href="https://instagram.com/gpt_tour_kz?igshid=NTc4MTIwNjQ2YQ==" target="_blank"><img src={viber} alt="" /></a>
                             <a href="https://instagram.com/gpt_tour_kz?igshid=NTc4MTIwNjQ2YQ==" target="_blank"><img src={instagram} alt="" /></a>
@@ -242,7 +245,7 @@ const App = () => {
                     <EuropeMap width={800} height={600} />
                 </div>
             </div>
-            <div className="form_panel" id="section3">
+            <div className="form_panel" id="section3" style={{backgroundImage:`url(${formBackground})`}}>
                 <div className="container">
                     <h1 className="title">{t("form")}</h1>
                     <form className="form" onSubmit={(e) => Submit(e)}>
@@ -262,7 +265,7 @@ const App = () => {
                             <a className="footer_link">{t('Tours')}</a>
                             <a className="footer_link">{t('Question')}</a>
                         </div>
-                        <div class="social_media">
+                        <div className="social_media">
                             <a href="https://wa.me/+77006721042" target="_blank"><img src={whatsapp} alt="" /></a>
                             <a href="https://instagram.com/gpt_tour_kz?igshid=NTc4MTIwNjQ2YQ==" target="_blank"><img src={viber} alt="" /></a>
                             <a href="https://instagram.com/gpt_tour_kz?igshid=NTc4MTIwNjQ2YQ==" target="_blank"><img src={instagram} alt="" /></a>
@@ -289,7 +292,7 @@ const App = () => {
                                     return <Message key={i} model={message} />
                                 })}
                             </MessageList>
-                            <MessageInput placeholder="Type message here" onSend={handleSend} />
+                            <MessageInput attachButton="false" placeholder="Type message here" onSend={handleSend} />
                         </ChatContainer>=
                     </MainContainer>
                 </div>
